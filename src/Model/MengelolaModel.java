@@ -25,8 +25,9 @@ public class MengelolaModel {
                 MengelolaEntity mengelolaEntity = new MengelolaEntity();
                 mengelolaEntity.setId_jajan(rs.getInt("id_jajan"));
                 mengelolaEntity.setId_transaksi(rs.getInt("id_transaksi"));
-                mengelolaEntity.setJumlah_jajan(rs.getInt("jumlah_jajan"));
-                mengelolaEntity.setJumlah_harga_jajan(rs.getFloat("jumlah_harga_jajan"));
+                mengelolaEntity.setQty_jajan(rs.getInt("qty_jajan"));
+                mengelolaEntity.setHarga_qty_jajan(rs.getFloat("harga_qty_jajan"));
+                mengelolaEntity.setTotal_pembayaran(rs.getFloat("total_pembayaran"));
                 mengelolaEntities.add(mengelolaEntity);
             }
         } catch (SQLException e) {
@@ -35,26 +36,30 @@ public class MengelolaModel {
         return mengelolaEntities;
     }
 
-    public void insertMengelola(ArrayList<MengelolaEntity> mengelolaEntity) {
+    public boolean insertMengelola(ArrayList<MengelolaEntity> mengelolaEntity) {
         ArrayList<MengelolaEntity> mengelolaEntities = new ArrayList<>();
         try {
             for (MengelolaEntity i : mengelolaEntity
-            ) {sql = String.format("INSERT INTO mengelola (ID_JAJAN ,ID_TRANSAKSI, JUMLAH_JAJAN, JUMLAH_HARGA_JAJAN) VALUES " +
-                            "('%s', '%s', '%s', '%s');",
+            ) {sql = String.format("INSERT INTO mengelola (ID_JAJAN ,ID_TRANSAKSI, QTY_JAJAN, " +
+                            "HARGA_QTY_JAJAN, TOTAL_PEMBAYARAN) VALUES " +
+                            "('%s', '%s', '%s', '%s', '%s');",
                     i.getId_jajan(),
                     i.getId_transaksi(),
-                    i.getJumlah_jajan(),
-                    i.getJumlah_harga_jajan());
+                    i.getQty_jajan(),
+                    i.getHarga_qty_jajan(),
+                    i.getTotal_pembayaran());
                 PreparedStatement statement = conn.prepareStatement(sql);
                 if (statement.executeUpdate() > 0) {
                     System.out.println("Berhasil Menambah Data");
                 } else {
                     System.out.println("Gagal Menambah Data");
+                    break;
                 }
             }
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-       //eturn mengelolaEntities;
+        return false;
     }
 }

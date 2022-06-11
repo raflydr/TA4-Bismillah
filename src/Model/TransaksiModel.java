@@ -24,7 +24,7 @@ public class TransaksiModel{
                 TransaksiEntity transaksiEntity = new TransaksiEntity();
                 transaksiEntity.setId_transaksi(rs.getInt("id_transaksi"));
                 transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
-                transaksiEntity.setJumlah_pembayaran(rs.getFloat("jumlah_pembayaran"));
+                //transaksiEntity.setJumlah_pembayaran(rs.getFloat("jumlah_pembayaran"));
                 transaksiEntities.add(transaksiEntity);
             }
         } catch (SQLException e) {
@@ -32,14 +32,13 @@ public class TransaksiModel{
         }
         return transaksiEntities;
     }
-    public ArrayList<TransaksiEntity> insertTransaksi(TransaksiEntity transaksiEntity){
-        ArrayList<TransaksiEntity> transaksiEntities = new ArrayList<>();
+    public void insertTransaksi(TransaksiEntity transaksiEntity){
         try {
-            sql = String.format("INSERT INTO transaksi (ID_TRANSAKSI, TGL_TRANSAKSI, JUMLAH_PEMBAYARAN) VALUES " +
-                            "('%s', NOW(), '%s');",
+            sql = String.format("INSERT INTO transaksi (ID_TRANSAKSI, TGL_TRANSAKSI) VALUES " +
+                            "('%s', NOW());",
                     transaksiEntity.getId_transaksi(),
-                    //transaksiEntity.getTgl_transaksi(),
-                    transaksiEntity.getJumlah_pembayaran()
+                    transaksiEntity.getTgl_transaksi()
+                    //transaksiEntity.getJumlah_pembayaran()
             );
             PreparedStatement statement = conn.prepareStatement(sql);
             result = statement.executeUpdate();
@@ -51,7 +50,6 @@ public class TransaksiModel{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return transaksiEntities;
     }
 
 }

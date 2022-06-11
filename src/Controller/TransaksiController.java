@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class TransaksiController {
-    public ArrayList<TransaksiEntity> insertTransaksi(Date tgl_transaksi, float jumlah_pembayaran){
+    public void insertTransaksi(Date tgl_transaksi) {
         TransaksiModel transaksiModel = new TransaksiModel();
-        TransaksiEntity transaksiEntity = new TransaksiEntity(0, tgl_transaksi, jumlah_pembayaran);
+        TransaksiEntity transaksiEntity = new TransaksiEntity(0, tgl_transaksi);
         transaksiModel.insertTransaksi(transaksiEntity);
-        return new TransaksiModel().insertTransaksi(transaksiEntity);
     }
     public ArrayList<TransaksiEntity> getTransaksi(){
         return new TransaksiModel().getTransaksi();

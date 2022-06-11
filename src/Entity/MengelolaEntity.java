@@ -1,8 +1,8 @@
 package Entity;
 
 public class MengelolaEntity {
-    private int id_jajan, id_transaksi, jumlah_jajan;
-    private float jumlah_harga_jajan;
+    private int id_jajan, id_transaksi, qty_jajan;
+    private float harga_qty_jajan, total_pembayaran;
     //public static JajanEntity jajanEntity = new JajanEntity();
     //public static TransaksiEntity transaksiEntity = new TransaksiEntity();
 
@@ -10,11 +10,12 @@ public class MengelolaEntity {
     public  MengelolaEntity() {
     }
 
-    public MengelolaEntity(int id_jajan, int id_transaksi,int jumlah_jajan, float jumlah_harga_jajan) {
+    public MengelolaEntity(int id_jajan, int id_transaksi,int qty_jajan, float harga_qty_jajan, float total_pembayaran) {
         this.id_jajan = id_jajan;
         this.id_transaksi = id_transaksi;
-        this.jumlah_jajan = jumlah_jajan;
-        this.jumlah_harga_jajan = jumlah_harga_jajan;
+        this.qty_jajan = qty_jajan;
+        this.harga_qty_jajan = harga_qty_jajan;
+        this.total_pembayaran = total_pembayaran;
     }
 
     public int getId_jajan() {
@@ -31,18 +32,24 @@ public class MengelolaEntity {
         this.id_transaksi = id_transaksi;
     }
 
-    public int getJumlah_jajan() {
-        return jumlah_jajan;
+    public int getQty_jajan() {
+        return qty_jajan;
     }
-    public void setJumlah_jajan(int jumlah_jajan) {
-        this.jumlah_jajan = jumlah_jajan;
+    public void setQty_jajan(int qty_jajan) {
+        this.qty_jajan = qty_jajan;
     }
 
-
-    public float getJumlah_harga_jajan() {
-        return jumlah_harga_jajan;
+    public float getHarga_qty_jajan() {
+        return harga_qty_jajan;
     }
-    public void setJumlah_harga_jajan(float jumlah_harga_jajan) {
-        this.jumlah_harga_jajan = jumlah_harga_jajan;
+    public void setHarga_qty_jajan(float harga_qty_jajan) {
+        this.harga_qty_jajan = harga_qty_jajan;
+    }
+
+    public float getTotal_pembayaran() {
+        return total_pembayaran;
+    }
+    public void setTotal_pembayaran(float total_pembayaran) {
+        this.total_pembayaran = total_pembayaran;
     }
 }

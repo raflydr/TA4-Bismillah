@@ -5,14 +5,14 @@ import java.util.Date;
 public class TransaksiEntity {
     private int id_transaksi;
     private Date tgl_transaksi;
-    private float jumlah_pembayaran;
+    //private float jumlah_pembayaran;
 
     public  TransaksiEntity() {
     }
-    public TransaksiEntity(int id_transaksi, Date tgl_transaksi, float jumlah_pembayaran) {
+    public TransaksiEntity(int id_transaksi, Date tgl_transaksi) {
         this.id_transaksi = id_transaksi;
         this.tgl_transaksi = tgl_transaksi;
-        this.jumlah_pembayaran = jumlah_pembayaran;
+        //this.jumlah_pembayaran = jumlah_pembayaran;
 
     }
 
@@ -32,10 +32,12 @@ public class TransaksiEntity {
         this.tgl_transaksi = tgl_transaksi;
     }
 
+    /*
     public float getJumlah_pembayaran() {
         return jumlah_pembayaran;
     }
     public void setJumlah_pembayaran(float jumlah_pembayaran) {
         this.jumlah_pembayaran = jumlah_pembayaran;
     }
+     */
 }

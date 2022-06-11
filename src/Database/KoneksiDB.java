@@ -7,7 +7,7 @@ public class KoneksiDB {
     public static Connection getconection() {
         Connection conn = null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/db_penjualanjajan";
+        String url = "jdbc:mysql://localhost:3306/db_jajanrafly";
         String user = "root";
         String pass = "";
         try{

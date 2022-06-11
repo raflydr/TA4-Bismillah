@@ -1,37 +1,15 @@
 package Model;
 import Database.KoneksiDB;
 import Entity.JajanEntity;
+import Entity.TransaksiEntity;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class JajanModel{
     String sql;
     public Connection conn = KoneksiDB.getconection();
-    public ArrayList<JajanEntity> getJajan(){
-        ArrayList<JajanEntity> jajanEntities = new ArrayList<>();
-        try {
-            String sql = "select *" +
-                    "from jajan ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                JajanEntity jajanEntity = new JajanEntity();
-                jajanEntity.setId_jajan(rs.getInt("id_jajan"));
-                jajanEntity.setId_jenis_jajan(rs.getInt("id_jenis_jajan"));
-                jajanEntity.setNama_jajan(rs.getString("nama_jajan"));
-                jajanEntity.setHarga_jajan(rs.getFloat("harga_jajan"));
-                jajanEntity.setStok_jajan(rs.getInt("stok_jajan"));
-                jajanEntities.add(jajanEntity);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return jajanEntities;
-    }
+
 
     public void insertJajan(JajanEntity jajanEntity) {
 
@@ -94,5 +72,46 @@ public class JajanModel{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void viewJajan () {
+        try {
+            Statement stmt = conn.createStatement();
+            //Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM jajan";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                System.out.println(+rs.getInt("id_jajan") + ". "
+                        + rs.getInt("id_jenis_jajan") + " -- "
+                        + rs.getString("nama_jajan") + " -- "
+                        + rs.getFloat("harga_jajan") + " -- "
+                        + rs.getInt("stok_jajan"));
+            }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<JajanEntity> getJajan(){
+        ArrayList<JajanEntity> jajanEntities = new ArrayList<>();
+        try {
+            String sql = "select *" +
+                    "from jajan ";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                JajanEntity jajanEntity = new JajanEntity();
+                jajanEntity.setId_jajan(rs.getInt("id_jajan"));
+                jajanEntity.setId_jenis_jajan(rs.getInt("id_jenis_jajan"));
+                jajanEntity.setNama_jajan(rs.getString("nama_jajan"));
+                jajanEntity.setHarga_jajan(rs.getFloat("harga_jajan"));
+                jajanEntity.setStok_jajan(rs.getInt("stok_jajan"));
+                jajanEntities.add(jajanEntity);
+                //transaksiEntities.add(transaksiEntity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return jajanEntities;
     }
 }
