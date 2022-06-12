@@ -1,8 +1,16 @@
 package Entity;
+import java.util.Date;
+import Entity.TransaksiEntity;
 
 public class MengelolaEntity {
+    TransaksiEntity transaksiEntity = new TransaksiEntity();
     private int id_jajan, id_transaksi, qty_jajan;
     private float harga_qty_jajan, total_pembayaran;
+    public TransaksiEntity tgl_transaksi;
+    public TransaksiEntity id_transaksi1;
+
+    //private TransaksiEntity id_transaksi1;
+    //private TransaksiEntity tgl_transaksi;
     //public static JajanEntity jajanEntity = new JajanEntity();
     //public static TransaksiEntity transaksiEntity = new TransaksiEntity();
 
@@ -10,13 +18,22 @@ public class MengelolaEntity {
     public  MengelolaEntity() {
     }
 
-    public MengelolaEntity(int id_jajan, int id_transaksi,int qty_jajan, float harga_qty_jajan, float total_pembayaran) {
+    public MengelolaEntity(int id_jajan, int id_transaksi, int qty_jajan, float harga_qty_jajan, float total_pembayaran){
         this.id_jajan = id_jajan;
         this.id_transaksi = id_transaksi;
         this.qty_jajan = qty_jajan;
         this.harga_qty_jajan = harga_qty_jajan;
         this.total_pembayaran = total_pembayaran;
+
+        //this.id_transaksi1 = id_transaksi1;
+        //this.tgl_transaksi = tgl_transaksi;
+        //this.tgl_transaksi = tgl_transaksi;
     }
+    //public TransaksiEntity transaksiEntity (int id_transaksi, Date tgl_transaksi){
+        //this.id_transaksi1 = id_transaksi;
+        //this.tgl_transaksi = tgl_transaksi;
+      //  return transaksiEntity(id_transaksi, tgl_transaksi);
+    //}
 
     public int getId_jajan() {
         return id_jajan;
@@ -51,5 +68,19 @@ public class MengelolaEntity {
     }
     public void setTotal_pembayaran(float total_pembayaran) {
         this.total_pembayaran = total_pembayaran;
+    }
+/*
+    public TransaksiEntity getId_transaksi1(){
+        return id_transaksi1;
+    }
+    public void setId_transaksi1(TransaksiEntity id_transaksi1){
+        this.id_transaksi1 = id_transaksi1;
+        }
+        */
+    public TransaksiEntity getTgl_transaksi(){
+        return tgl_transaksi;
+    }
+    public void setTgl_transaksi(TransaksiEntity tgl_transaksi){
+        this.tgl_transaksi = tgl_transaksi;
     }
 }

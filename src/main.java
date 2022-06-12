@@ -96,7 +96,7 @@ public class main {
                             switch (pil) {
                                 case 1 -> insertTransaksi();
                                 case 2 -> insertMengelola();
-                                case 3 -> viewMengelola();
+                                case 3 -> viewDetail();
                                 case 4 -> System.out.println("Logout..");
                                 default -> System.out.println("Inputan Salah");
                             }
@@ -237,13 +237,14 @@ public class main {
             mengelolaEntity.setQty_jajan(input.nextInt());
             System.out.print("Masukan Jumlah Harga Jajan: ");
             mengelolaEntity.setHarga_qty_jajan(input.nextFloat());
-            System.out.print("Masukan Total Pembayaran : ");
-            mengelolaEntity.setTotal_pembayaran(input.nextFloat());
 
-            mengelolaEntities.add(mengelolaEntity);
             System.out.println("Apakah ingin menambah : ");
             pilih = input.next();
-
+            if (pilih.equals("N")){
+                System.out.print("Masukan Total Pembayaran : ");
+                mengelolaEntity.setTotal_pembayaran(input.nextFloat());
+            }
+            mengelolaEntities.add(mengelolaEntity);
         } while (pilih.equals("Y"));
         mengelolaController.insertMengelola(mengelolaEntities);
     }
@@ -261,6 +262,39 @@ public class main {
             System.out.println("qty jajan : " + index.getQty_jajan());
             System.out.println("harga qty jajan : " + index.getHarga_qty_jajan());
             System.out.println("total pembayaran : " + index.getTotal_pembayaran());
+
+            //System.out.println("tgl transaksi :" + index.getTgl_transaksi());
+            //System.out.println("jumlah pembayaran :" + index.getJumlah_pembayaran());
+            System.out.println(" ");
+        }
+
+        //transaksiController.getTransaksi();
+    }
+    private static void viewDetail(){
+        //ArrayList<MengelolaEntity> mengelolaEntities = mengelolaController.getDetail();
+        ArrayList<MengelolaEntity> mengelolaEntities = mengelolaController.getDetail();
+        ArrayList<TransaksiEntity> transaksiEntities = transaksiController.getTransaksi();
+        if(mengelolaEntities.size() == 0) {
+            System.out.println("There is no data");
+            return;
+        }
+        for(MengelolaEntity index : mengelolaEntities) {
+            //TransaksiEntity transaksiEntity = transaksiEntities.get();
+            //TransaksiEntity transaksiEntity = new TransaksiEntity();
+            System.out.println("id jajan : " + index.getId_jajan());
+            System.out.println("id transaksi : " + index.getId_transaksi());
+            System.out.println("qty jajan : " + index.getQty_jajan());
+            System.out.println("harga qty jajan : " + index.getHarga_qty_jajan());
+            System.out.println("total pembayaran : " + index.getTotal_pembayaran());
+
+            //TransaksiEntity
+            System.out.println("id transaksi : " + index.getId_transaksi());
+            System.out.println("tgl transaksi : " + index.getTgl_transaksi() );;
+            //viewTransaksi();
+            //TransaksiEntity index1 = new TransaksiEntity();
+
+            //-System.out.println("id transaksi : " + index.getId_transaksi());
+            //-System.out.println("tgl transaksi : " + index.getTgl_transaksi());
 
             //System.out.println("tgl transaksi :" + index.getTgl_transaksi());
             //System.out.println("jumlah pembayaran :" + index.getJumlah_pembayaran());

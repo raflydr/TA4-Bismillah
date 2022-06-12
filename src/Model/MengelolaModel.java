@@ -3,6 +3,7 @@ package Model;
 import Database.KoneksiDB;
 import Entity.JajanEntity;
 import Entity.MengelolaEntity;
+import Entity.TransaksiEntity;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +30,41 @@ public class MengelolaModel {
                 mengelolaEntity.setHarga_qty_jajan(rs.getFloat("harga_qty_jajan"));
                 mengelolaEntity.setTotal_pembayaran(rs.getFloat("total_pembayaran"));
                 mengelolaEntities.add(mengelolaEntity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mengelolaEntities;
+    }
+    public ArrayList<MengelolaEntity> getDetail() {
+        ArrayList<MengelolaEntity> mengelolaEntities = new ArrayList<>();
+        try {
+            String sql = "select * from transaksi t right join mengelola m on t.id_transaksi = m.id_transaksi";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                MengelolaEntity mengelolaEntity = new MengelolaEntity();
+                mengelolaEntity.setId_jajan(rs.getInt("id_jajan"));
+                mengelolaEntity.setId_transaksi(rs.getInt("id_transaksi"));
+                mengelolaEntity.setQty_jajan(rs.getInt("qty_jajan"));
+                mengelolaEntity.setHarga_qty_jajan(rs.getFloat("harga_qty_jajan"));
+                mengelolaEntity.setTotal_pembayaran(rs.getFloat("total_pembayaran"));
+                TransaksiEntity transaksiEntity = new TransaksiEntity();
+                //mengelolaEntity.setId_transaksi(rs.getInt("id_transaki"));
+                //mengelolaEntity.setId_transaksi(transaksiEntity);
+                //transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
+               // mengelolaEntity.setTgl_transaksi(transaksiEntity);
+
+                //transaksiEntity.setId_transaksi(rs.getInt("id_transaksi"));
+                //transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
+                transaksiEntity.setId_transaksi(rs.getInt("id_transaksi"));
+                transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
+                //mengelolaEntity.setId_transaksi1(rs.getInt("id_transaksi"));
+                //mengelolaEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
+                //mengelolaEntity.setId_transaksi1(transaksiEntity);
+                //mengelolaEntity.setTgl_transaksi(transaksiEntity);
+                mengelolaEntities.add(mengelolaEntity);
+                //mengelolaEntities.add(transaksiEntity);
             }
         } catch (SQLException e) {
             e.printStackTrace();
