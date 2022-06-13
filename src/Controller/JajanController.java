@@ -11,7 +11,6 @@ public class JajanController {
     JajanModel jajanModel = new JajanModel();
     public void insertJajan(int id_jenis_jajan, String nama_jajan, float harga_jajan, int stok_jajan) {
         JajanModel jajanModel = new JajanModel();
-        //JajanEntity jajanEntity = new JajanEntity(0, id_jenis_jajan, nama_jajan, harga_jajan, stok_jajan);
         JajanEntity jajanEntity = new JajanEntity (0, id_jenis_jajan, nama_jajan, harga_jajan, stok_jajan);
         jajanModel.insertJajan(jajanEntity);
     }
@@ -24,10 +23,7 @@ public class JajanController {
         JajanModel jajanModel = new JajanModel();
         jajanModel.deleteJajan(currentId);
     }
-    public void viewJajan(){
-        //jajanModel.viewJajan();
-        jajanModel.viewJajan();
-    }
+
     public ArrayList<JajanEntity> getJajan(){
         return new JajanModel().getJajan();
     }

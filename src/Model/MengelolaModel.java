@@ -49,20 +49,8 @@ public class MengelolaModel {
                 mengelolaEntity.setQty_jajan(rs.getInt("qty_jajan"));
                 mengelolaEntity.setHarga_qty_jajan(rs.getFloat("harga_qty_jajan"));
                 mengelolaEntity.setTotal_pembayaran(rs.getFloat("total_pembayaran"));
-                TransaksiEntity transaksiEntity = new TransaksiEntity();
-                //mengelolaEntity.setId_transaksi(rs.getInt("id_transaki"));
-                //mengelolaEntity.setId_transaksi(transaksiEntity);
-                //transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
-               // mengelolaEntity.setTgl_transaksi(transaksiEntity);
-
-                //transaksiEntity.setId_transaksi(rs.getInt("id_transaksi"));
-                //transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
-                transaksiEntity.setId_transaksi(rs.getInt("id_transaksi"));
-                transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
                 //mengelolaEntity.setId_transaksi1(rs.getInt("id_transaksi"));
-                //mengelolaEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
-                //mengelolaEntity.setId_transaksi1(transaksiEntity);
-                //mengelolaEntity.setTgl_transaksi(transaksiEntity);
+                mengelolaEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
                 mengelolaEntities.add(mengelolaEntity);
                 //mengelolaEntities.add(transaksiEntity);
             }
@@ -70,6 +58,22 @@ public class MengelolaModel {
             e.printStackTrace();
         }
         return mengelolaEntities;
+    }
+
+    public void updateStok(int qty_jajan, int id_jajan){
+        //int result = 0;
+        try {
+            sql = "UPDATE jajan SET stok_jajan=stok_jajan-? WHERE id_jajan = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, qty_jajan);
+            statement.setInt(2, id_jajan);
+            statement.executeUpdate();
+
+        }catch (SQLException e){
+            System.out.println("Gagal Update");
+            e.printStackTrace();
+        }
+
     }
 
     public boolean insertMengelola(ArrayList<MengelolaEntity> mengelolaEntity) {

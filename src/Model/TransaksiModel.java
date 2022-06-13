@@ -24,7 +24,6 @@ public class TransaksiModel{
                 TransaksiEntity transaksiEntity = new TransaksiEntity();
                 transaksiEntity.setId_transaksi(rs.getInt("id_transaksi"));
                 transaksiEntity.setTgl_transaksi(rs.getDate("tgl_transaksi"));
-                //transaksiEntity.setJumlah_pembayaran(rs.getFloat("jumlah_pembayaran"));
                 transaksiEntities.add(transaksiEntity);
             }
         } catch (SQLException e) {

@@ -4,7 +4,6 @@ import Entity.AdminEntity;
 
 public class AdminModel extends AdminEntity {
     private static AdminEntity[] admin = new AdminEntity[100];
-    //private static int adminEntity = 0;
     public void insert(String[] nama, String[] pass){
         admin[0] = new AdminEntity(nama[0], pass[0]);
     }

@@ -16,8 +16,6 @@ public class JajanEntity {
         this.harga_jajan = harga_jajan;
         this.stok_jajan = stok_jajan;
     }
-    //public JajanEntity(int id_jajan, int id_jenis_jajan, String nama_jajan, float harga_jajan, int stok_jajan) {
-    //}
 
     public int getId_jajan() {
         return id_jajan;

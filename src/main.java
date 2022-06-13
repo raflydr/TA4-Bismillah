@@ -100,7 +100,7 @@ public class main {
                                 case 4 -> System.out.println("Logout..");
                                 default -> System.out.println("Inputan Salah");
                             }
-                        } while (pil != 3);
+                        } while (pil != 4);
                     }
 
                 }
@@ -125,9 +125,6 @@ public class main {
     }
 
     public static void insertJajan() {
-        //jajanController.viewJajan();
-        //jajanController.viewJajan();
-        //JajanEntity jajanEntity = new JajanEntity();
         viewJajan();
         System.out.print("Masukan ID Jenis Jajan : ");
         jajanEntity.setId_jenis_jajan(input.nextInt());
@@ -138,11 +135,10 @@ public class main {
         System.out.print("Masukan Stok Jajan: ");
         jajanEntity.setStok_jajan(input.nextInt());
 
-        //JajanController jajanController = new JajanController();
         jajanController.insertJajan(jajanEntity.getId_jenis_jajan(),jajanEntity.getNama_jajan(), jajanEntity.getHarga_jajan(),
                 jajanEntity.getStok_jajan());
-        //jajanEntity.getStok_jajan() = jajanEntity.getStok_jajan() - mengelolaEntity.setJumlah_jajan();
     }
+
     private static void viewJajan(){
         ArrayList<JajanEntity> jajanEntities = jajanController.getJajan();
         if(jajanEntities.size() == 0) {
@@ -150,7 +146,6 @@ public class main {
             return;
         }
         for(JajanEntity index : jajanEntities) {
-            //TransaksiEntity transaksiEntity = transaksiEntities.get();
             System.out.println("id jajan : " + index.getId_jajan());
             System.out.println("id jenis jajan : " + index.getId_jenis_jajan());
             System.out.println("nama jajan : " + index.getNama_jajan());
@@ -230,6 +225,7 @@ public class main {
         do {
             MengelolaEntity mengelolaEntity = new MengelolaEntity();
             System.out.print("Masukan ID Jajan : ");
+            //int id_jajan = input.nextInt();
             mengelolaEntity.setId_jajan(input.nextInt());
             System.out.print("Masukan ID Transaksi : ");
             mengelolaEntity.setId_transaksi(input.nextInt());
@@ -237,6 +233,7 @@ public class main {
             mengelolaEntity.setQty_jajan(input.nextInt());
             System.out.print("Masukan Jumlah Harga Jajan: ");
             mengelolaEntity.setHarga_qty_jajan(input.nextFloat());
+            mengelolaController.updateStok(mengelolaEntity.getQty_jajan(), mengelolaEntity.getId_jajan());
 
             System.out.println("Apakah ingin menambah : ");
             pilih = input.next();
@@ -281,15 +278,18 @@ public class main {
         for(MengelolaEntity index : mengelolaEntities) {
             //TransaksiEntity transaksiEntity = transaksiEntities.get();
             //TransaksiEntity transaksiEntity = new TransaksiEntity();
+            System.out.println("id transaksi : " + index.getId_transaksi());
+            System.out.println("tgl transaksi : " + index.getTgl_transaksi());
             System.out.println("id jajan : " + index.getId_jajan());
             System.out.println("id transaksi : " + index.getId_transaksi());
             System.out.println("qty jajan : " + index.getQty_jajan());
             System.out.println("harga qty jajan : " + index.getHarga_qty_jajan());
             System.out.println("total pembayaran : " + index.getTotal_pembayaran());
 
+
             //TransaksiEntity
-            System.out.println("id transaksi : " + index.getId_transaksi());
-            System.out.println("tgl transaksi : " + index.getTgl_transaksi() );;
+            //System.out.println("id transaksi : " + index.getId_transaksi());
+            //System.out.println("tgl transaksi : " + index.getTgl_transaksi() );;
             //viewTransaksi();
             //TransaksiEntity index1 = new TransaksiEntity();
 

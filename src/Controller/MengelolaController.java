@@ -1,6 +1,7 @@
 package Controller;
 
 import Entity.MengelolaEntity;
+import Model.JajanModel;
 import Model.MengelolaModel;
 
 import java.util.ArrayList;
@@ -18,5 +19,9 @@ public class MengelolaController {
 
     public ArrayList<MengelolaEntity> getDetail(){
         return mengelolaModel.getDetail();
+    }
+
+    public void updateStok(int qty_jajan, int id_jajan){
+        mengelolaModel.updateStok(qty_jajan, id_jajan);
     }
 }

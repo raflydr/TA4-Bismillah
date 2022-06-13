@@ -2,12 +2,12 @@ package Entity;
 import java.util.Date;
 import Entity.TransaksiEntity;
 
-public class MengelolaEntity {
+public class MengelolaEntity extends TransaksiEntity{
     TransaksiEntity transaksiEntity = new TransaksiEntity();
     private int id_jajan, id_transaksi, qty_jajan;
     private float harga_qty_jajan, total_pembayaran;
-    public TransaksiEntity tgl_transaksi;
-    public TransaksiEntity id_transaksi1;
+    private Date tgl_transaksi;
+    private int id_transaksi1;
 
     //private TransaksiEntity id_transaksi1;
     //private TransaksiEntity tgl_transaksi;
@@ -77,10 +77,17 @@ public class MengelolaEntity {
         this.id_transaksi1 = id_transaksi1;
         }
         */
-    public TransaksiEntity getTgl_transaksi(){
+    public int getId_transaksi1(){
+        return id_transaksi1;
+    }
+    public void setId_transaksi1(){
+        this.id_transaksi1 = id_transaksi1;
+    }
+    public Date getTgl_transaksi(){
+        //return tgl_transaksi;
         return tgl_transaksi;
     }
-    public void setTgl_transaksi(TransaksiEntity tgl_transaksi){
+    public void setTgl_transaksi(Date tgl_transaksi){
         this.tgl_transaksi = tgl_transaksi;
     }
 }

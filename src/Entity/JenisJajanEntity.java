@@ -13,8 +13,6 @@ public class JenisJajanEntity {
         this.nama_jenis_jajan=nama_jenis_jajan;
     }
 
-    //public JenisJajanEntity(int id_jenis_jajan, String nama_jenis_jajan) {
-    //}
 
     public int getId_jenis_jajan() {
         return id_jenis_jajan;

@@ -73,25 +73,7 @@ public class JajanModel{
             e.printStackTrace();
         }
     }
-    public void viewJajan () {
-        try {
-            Statement stmt = conn.createStatement();
-            //Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM jajan";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                System.out.println(+rs.getInt("id_jajan") + ". "
-                        + rs.getInt("id_jenis_jajan") + " -- "
-                        + rs.getString("nama_jajan") + " -- "
-                        + rs.getFloat("harga_jajan") + " -- "
-                        + rs.getInt("stok_jajan"));
-            }
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
     public ArrayList<JajanEntity> getJajan(){
         ArrayList<JajanEntity> jajanEntities = new ArrayList<>();
         try {
