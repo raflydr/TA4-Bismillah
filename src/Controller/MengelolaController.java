@@ -24,4 +24,8 @@ public class MengelolaController {
     public void updateStok(int qty_jajan, int id_jajan){
         mengelolaModel.updateStok(qty_jajan, id_jajan);
     }
+
+    public void totalPem(int id_transaksi){
+        mengelolaModel.totalPem(id_transaksi);
+    }
 }

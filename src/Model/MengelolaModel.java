@@ -76,6 +76,23 @@ public class MengelolaModel {
 
     }
 
+    public void totalPem(int id_transaksi){
+        //int result = 0;
+        try {
+            sql = "SELECT SUM(harga_qty_jajan) AS total_pembayaran FROM mengelola WHERE id_transaksi = ?";
+            //sql = "UPDATE jajan SET stok_jajan=stok_jajan-? WHERE id_jajan = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id_transaksi);
+            //statement.setInt(2, id_jajan);
+            statement.executeUpdate();
+
+        }catch (SQLException e){
+            System.out.println("Gagal Update");
+            e.printStackTrace();
+        }
+
+    }
+
     public boolean insertMengelola(ArrayList<MengelolaEntity> mengelolaEntity) {
         ArrayList<MengelolaEntity> mengelolaEntities = new ArrayList<>();
         try {

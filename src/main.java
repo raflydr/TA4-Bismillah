@@ -153,8 +153,6 @@ public class main {
             System.out.println("stok jajan : " + index.getStok_jajan());
             System.out.println(" ");
         }
-
-        //transaksiController.getTransaksi();
     }
 
     public static void updateJajan() {
@@ -193,11 +191,8 @@ public class main {
         TransaksiEntity transaksiEntity = new TransaksiEntity();
 
 
-        //transaksiEntity.setTgl_transaksi(new Date());
         System.out.println("Masukan Tgl Transaksi : ");
 
-        //System.out.println("Masukan Jumlah Pembayaran : ");
-        //transaksiEntity.setJumlah_pembayaran(input.nextFloat());
 
         TransaksiController transaksiController = new TransaksiController();
         transaksiController.insertTransaksi(transaksiEntity.getTgl_transaksi());
@@ -205,14 +200,13 @@ public class main {
     private static void viewTransaksi(){
         ArrayList<TransaksiEntity> transaksiEntities = transaksiController.getTransaksi();
         if(transaksiEntities.size() == 0) {
-            System.out.println("There is no data");
+            System.out.println("Tidak Ada Data");
             return;
         }
         for(TransaksiEntity index : transaksiEntities) {
-            //TransaksiEntity transaksiEntity = transaksiEntities.get();
             System.out.println("id transaksi : " + index.getId_transaksi());
             System.out.println("tgl transaksi :" + index.getTgl_transaksi());
-            //System.out.println("jumlah pembayaran :" + index.getJumlah_pembayaran());
+
             System.out.println(" ");
         }
 
@@ -231,7 +225,7 @@ public class main {
             mengelolaEntity.setId_transaksi(input.nextInt());
             System.out.print("Masukan Qty Jajan: ");
             mengelolaEntity.setQty_jajan(input.nextInt());
-            System.out.print("Masukan Jumlah Harga Jajan: ");
+            System.out.print("Masukan Harga Qty Jajan: ");
             mengelolaEntity.setHarga_qty_jajan(input.nextFloat());
             mengelolaController.updateStok(mengelolaEntity.getQty_jajan(), mengelolaEntity.getId_jajan());
 
@@ -240,6 +234,8 @@ public class main {
             if (pilih.equals("N")){
                 System.out.print("Masukan Total Pembayaran : ");
                 mengelolaEntity.setTotal_pembayaran(input.nextFloat());
+
+                //mengelolaController.totalPem(mengelolaEntity.getId_transaksi());
             }
             mengelolaEntities.add(mengelolaEntity);
         } while (pilih.equals("Y"));
@@ -249,7 +245,7 @@ public class main {
     private static void viewMengelola(){
         ArrayList<MengelolaEntity> mengelolaEntities = mengelolaController.getMengelola();
         if(mengelolaEntities.size() == 0) {
-            System.out.println("There is no data");
+            System.out.println("Tidak Ada Data");
             return;
         }
         for(MengelolaEntity index : mengelolaEntities) {
@@ -272,7 +268,7 @@ public class main {
         ArrayList<MengelolaEntity> mengelolaEntities = mengelolaController.getDetail();
         ArrayList<TransaksiEntity> transaksiEntities = transaksiController.getTransaksi();
         if(mengelolaEntities.size() == 0) {
-            System.out.println("There is no data");
+            System.out.println("Tidak Ada Data");
             return;
         }
         for(MengelolaEntity index : mengelolaEntities) {
@@ -287,17 +283,6 @@ public class main {
             System.out.println("total pembayaran : " + index.getTotal_pembayaran());
 
 
-            //TransaksiEntity
-            //System.out.println("id transaksi : " + index.getId_transaksi());
-            //System.out.println("tgl transaksi : " + index.getTgl_transaksi() );;
-            //viewTransaksi();
-            //TransaksiEntity index1 = new TransaksiEntity();
-
-            //-System.out.println("id transaksi : " + index.getId_transaksi());
-            //-System.out.println("tgl transaksi : " + index.getTgl_transaksi());
-
-            //System.out.println("tgl transaksi :" + index.getTgl_transaksi());
-            //System.out.println("jumlah pembayaran :" + index.getJumlah_pembayaran());
             System.out.println(" ");
         }
 
